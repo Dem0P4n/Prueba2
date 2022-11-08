@@ -5,5 +5,23 @@
 </ion-header>
 
 <ion-content>
+  <ion-label>:)</ion-label>
+<ion-card *ngFor="let pro of productos" color="success" [routerLink]="['info-producto',pro.id]">
+  <img [src]="pro.images">
+  <ion-card-header>
+    <ion-card-title>{{pro.title}}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-label>{{pro.category}}</ion-label>
+    <ion-label>{{pro.rating}}</ion-label>
+    <ion-label color="warning">{{pro.discoultPercentage}}</ion-label>
+    <ion-label>{{pro.description}}</ion-label>
+  </ion-card-content>
+</ion-card>
+
+<ion-infinite-scroll (ionInfinite)="cargarMasProductos($event)">
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>
 
 </ion-content>
